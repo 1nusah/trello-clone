@@ -1,7 +1,7 @@
 const initialState = [
 	{
 		title: 'Last episode',
-		id: 0,
+		id: 3,
 		cards: [
 			{
 				id: 0,
@@ -11,9 +11,33 @@ const initialState = [
 				id: 1,
 				text: 'we used a mix between material ui react and styled components',
 			},
+		],
+	},
+	{
+		title: 'kpodjiemo',
+		id: 1,
+		cards: [
+			{
+				id: 0,
+				text: 'hello friends',
+			},
+		],
+	},
+	{
+		title: 'kpodjiemo',
+		id: 2,
+		cards: [
+			{
+				id: 0,
+				text: 'hello friends',
+			},
+			{
+				id: 1,
+				text: 'wassup baby',
+			},
 			{
 				id: 2,
-				text: 'hey there squad',
+				text: 'yoyoyo',
 			},
 		],
 	},

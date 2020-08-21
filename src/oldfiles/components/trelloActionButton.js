@@ -10,6 +10,7 @@ class TrelloActionButton extends React.Component {
 		formOpen: false,
 		text: '',
 	};
+
 	renderAddButton = () => {
 		const { list } = this.props;
 		const buttonText = list ? 'Add another list' : 'Add another card';
@@ -43,21 +44,22 @@ class TrelloActionButton extends React.Component {
 		});
 	};
 	handleAddList = () => {
-		const { dispatch, listId } = this.props;
+		const { dispatch } = this.props;
 		const text = this.state;
 
 		if (text) {
-			dispatch(addList(text, listId));
+			dispatch(addList(text));
 			return;
 		}
 	};
 	handleAddCard = () => {
-		const { dispatch, listId } = this.props;
+		const { dispatch, listID } = this.props;
 		const text = this.state;
 
 		if (text) {
-			dispatch(addCard(text, listId));
+			dispatch(addCard(listID, text));
 		}
+		return;
 	};
 	renderForm = () => {
 		const { list } = this.props;

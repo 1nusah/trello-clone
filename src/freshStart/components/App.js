@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
+import TrelloList from './trelloList';
 import { connect } from 'react-redux';
-import TrelloList from './TrelloList';
 import TrelloActionButton from './trelloActionButton';
+
 class App extends Component {
 	render() {
 		const { lists } = this.props;
+
 		return (
 			<div style={styles.page}>
 				<h2>Trello Clone</h2>
 				<div style={styles.listContainer}>
-					{lists.map((list) => (
-						<TrelloList
-							listId={list.id}
-							key={list.id}
-							title={list.title}
-							cards={list.cards}
-						/>
-					))}
-					<TrelloActionButton list />
+					{lists.map((list) => {
+						return (
+							<TrelloList title={list.title} cards={list.cards} key={list.id} />
+						);
+					})}
+					<div>
+						<TrelloActionButton list />
+					</div>
 				</div>
 			</div>
 		);
@@ -28,6 +29,7 @@ const styles = {
 		display: 'flex',
 		flexDirection: 'row',
 		marginRight: 8,
+		padding: 8,
 	},
 	page: {
 		overflow: 'hidden',

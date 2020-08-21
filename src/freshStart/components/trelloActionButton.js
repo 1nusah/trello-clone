@@ -1,4 +1,4 @@
-import React, { Component, useDispatch } from 'react';
+import React, { Component } from 'react';
 import Icon from '@material-ui/icons/Add';
 import Cancel from '@material-ui/icons/Cancel';
 import Card from '@material-ui/core/Card';

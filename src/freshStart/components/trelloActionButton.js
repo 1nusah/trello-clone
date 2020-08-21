@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useDispatch } from 'react';
 import Icon from '@material-ui/icons/Add';
 import Cancel from '@material-ui/icons/Cancel';
 import Card from '@material-ui/core/Card';
 import TextArea from 'react-textarea-autosize';
 import Button from '@material-ui/core/Button';
-import { addList } from '../actions/listActtions';
+import { connect } from 'react-redux';
+import { addList, addCard } from '../actions/';
 export class TrelloActionButton extends Component {
 	state = { openForm: false, text: '' };
 
@@ -16,11 +17,23 @@ export class TrelloActionButton extends Component {
 	};
 	handleAddlist = () => {
 		const { dispatch } = this.props;
-		const { text } = this.props;
+		const { text } = this.state;
 		if (text) {
 			dispatch(addList(text));
+			this.setState({ text: '' });
 		}
 		return;
+	};
+	handleInputChange = (e) => {
+		this.setState({ text: e.target.value });
+	};
+	handleAddCard = () => {
+		const { text } = this.state;
+		const { dispatch, listID } = this.props;
+		if (text) {
+			dispatch(addCard(text, listID));
+			this.setState({ text: '' });
+		}
 	};
 	renderAddButton = () => {
 		const { list } = this.props;
@@ -74,24 +87,16 @@ export class TrelloActionButton extends Component {
 						}}
 						onBlur={() => this.closeForm()}
 						value={this.state.text}
-						onChange={(e) => {
-							this.setState({ text: e.target.value });
-						}}
+						onChange={this.handleInputChange}
 					/>
 				</Card>
 				<div style={styles.openFormButtonGroup}>
 					<Button
+						onMouseDown={list ? this.handleAddlist : this.handleAddCard}
 						variant="contained"
 						style={{
 							color: 'white',
 							backgroundColor: '#5aac44',
-						}}
-						onMouseDown={() => {
-							const { dispatch } = this.props;
-							const { text } = this.props;
-							if (text) {
-								dispatch(addList(text));
-							}
 						}}
 					>
 						{buttonText}
@@ -120,4 +125,4 @@ const styles = {
 		marginTop: 8,
 	},
 };
-export default TrelloActionButton;
+export default connect()(TrelloActionButton);

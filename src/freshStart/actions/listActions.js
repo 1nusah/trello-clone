@@ -1,7 +1,7 @@
 import { CONSTANTS } from './index';
 export const addList = (title) => {
 	return {
-		type: CONSTANTS.ADD_CARD,
+		type: CONSTANTS.ADD_LIST,
 		payload: title,
 	};
 };

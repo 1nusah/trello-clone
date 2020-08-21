@@ -4,7 +4,7 @@ import TrelloActionButton from './trelloActionButton';
 import { connect } from 'react-redux';
 // import { addList } from '../actions';
 
-const TrelloList = ({ title, cards }) => {
+const TrelloList = ({ title, cards, listID }) => {
 	return (
 		<div style={styles.container}>
 			<h2 style={styles.title}>{title} </h2>
@@ -12,7 +12,7 @@ const TrelloList = ({ title, cards }) => {
 				return <TrelloCard text={cards.text} key={cards.id} />;
 			})}
 			<div>
-				<TrelloActionButton />
+				<TrelloActionButton listID={listID} />
 			</div>
 		</div>
 	);

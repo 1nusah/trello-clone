@@ -13,7 +13,12 @@ class App extends Component {
 				<div style={styles.listContainer}>
 					{lists.map((list) => {
 						return (
-							<TrelloList title={list.title} cards={list.cards} key={list.id} />
+							<TrelloList
+								listID={list.id}
+								title={list.title}
+								cards={list.cards}
+								key={list.id}
+							/>
 						);
 					})}
 					<div>
